@@ -1,7 +1,5 @@
 package multithreading.homework;
 import java.util.Random;
-import java.util.concurrent.Callable;
-
 import static java.lang.Thread.sleep;
 public class Philosopher implements Runnable {
     static Object spoon = new Object();
@@ -19,7 +17,6 @@ public class Philosopher implements Runnable {
     @Override
     public void run() {
         System.out.println(getName() + " сел за стол!");
-
         for (int i = 0; i < 20; i++) {
             try {
                 System.out.println(getName() + " размышляет.......");
@@ -32,13 +29,13 @@ public class Philosopher implements Runnable {
                 System.out.println(getName() + " закончил есть!");
                 return;
             }
+            System.out.println("Взял ложку " + Spoon.spoon.toString());
             System.out.println(getName() + " ест спагетти. Осталось спагетти :" + getSpagetti());
-
             eatSpagetti();
         }
     }
     public String getName() {
-        return "Филосов "+ name;
+        return "Филосов " + name;
     }
     public int eatSpagetti() {
         return spagetti--;
@@ -46,7 +43,7 @@ public class Philosopher implements Runnable {
     public int getSpagetti() {
         return spagetti;
     }
-    public int thinging(){
+    public int thinging() {
         return random.nextInt(5000);
     }
 }
