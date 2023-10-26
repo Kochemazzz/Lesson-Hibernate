@@ -3,7 +3,6 @@ import java.util.Random;
 
 import static java.lang.Thread.sleep;
 public class Philosopher implements Runnable {
-    static Object spoon = new Object();
     private String name;
     private int spagetti;
     private final Random random = new Random();
