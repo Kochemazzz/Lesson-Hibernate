@@ -1,4 +1,4 @@
 package multithreading.homework;
 public class Spoon {
-    static Spoon spoon = new Spoon();
+    static final Spoon spoon = new Spoon();
 }
