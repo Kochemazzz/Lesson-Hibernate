@@ -3,13 +3,15 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
+import static java.lang.Thread.MAX_PRIORITY;
 import static java.lang.Thread.sleep;
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Begin");
         ExecutorService executorService = Executors.newSingleThreadExecutor(new ThreadFactory() {
             @Override
             public Thread newThread(Runnable r) {
-                Thread thread = new Thread();
+                Thread thread = new Thread(r);
 //                thread.setDaemon(true);
                 return thread;
             }
@@ -21,7 +23,7 @@ public class Main {
                 try {
                     while (true) {
                         counter++;
-                        sleep(1000);
+                        Thread.sleep(1000);
                         System.out.println(counter);
                     }
                 } catch (InterruptedException e) {
@@ -29,14 +31,8 @@ public class Main {
                 }
             }
         });
-        try {
-            for (int i = 0; i <100000 ; i++) {
-                System.out.println("Hello");
-                sleep(1000);
-            }
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        executorService.shutdown();
+
+
+
     }
 }
