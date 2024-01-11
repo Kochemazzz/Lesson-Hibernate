@@ -12,7 +12,7 @@ public class StockMarket extends Thread{
     public void run() {
         while(true){
 
-            var i = index.addAndGet(random.nextInt(30) -10);
+           long i = (long) index.addAndGet(random.nextInt(30) -10);
             System.out.println(i + " is publish");
             try {
                 sleep(random.nextInt(500));
